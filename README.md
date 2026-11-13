@@ -350,12 +350,3 @@ python -m tests.test_failure_authorization
 - The current terminal setup uses a demo student session. It should not be treated as a complete production authentication system.
 - The FAISS index and SQLite database are important application resources and should be preserved when backing up the project.
 
-## 12. Contributors
-
-**Project:** CampusConnect: A University Student-Support Agent for CoCIS Freshers.
-
-**Institution:** Makerere University
-
-**College:** College of Computing and Information Sciences (CoCIS)
-
-**Programme:** Bachelor of Science in Software Engineering
