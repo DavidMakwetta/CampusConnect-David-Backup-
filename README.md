@@ -2,7 +2,7 @@
 
 ## 1. Introduction
 
-CampusConnect is an AI-powered student-support agent designed to assist freshers in the College of Computing and Information Sciences (CoCIS) at Makerere University.
+CampusConnect is an AI-Native student-support agent designed to assist freshers in the College of Computing and Information Sciences (CoCIS) at Makerere University.
 
 New students often have difficulties accessing reliable information about registration procedures, academic programmes, lecture venues, fees, university facilities, and student-support services. This information may be distributed across different documents and sources.
 
@@ -11,7 +11,7 @@ CampusConnect addresses this challenge by providing a centralised platform where
 ## 2. Key Features
 
 - **Retrieval-Augmented Generation (RAG):** Retrieves relevant information from the CoCIS knowledge base to support accurate responses.
-- **AI-powered student assistance:** Allows students to ask questions using natural language.
+- **AI-Native student assistance:** Allows students to ask questions using natural language.
 - **Tool integration:** Enables the agent to perform specific operations, such as looking up lecture venues and managing support requests.
 - **Memory:** Retains relevant support-request context to help students continue previously started tasks.
 - **Human approval:** Requires approval before carrying out support-request submissions that need authorisation.
