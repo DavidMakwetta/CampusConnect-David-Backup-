@@ -1,16 +1,32 @@
+
 from dotenv import load_dotenv
 
 load_dotenv()
 
 import os
 
-from app.models import GeminiModelClient
+# Active Groq model client
+from app.models import GroqModelClient
+
+# Original Gemini model client (kept for future use)
+# from app.models import GeminiModelClient
+
 from app.agent_graph import CampusConnectAgent
 from app.memory import MemoryService
 from app.tools import Executor, Session, Store
 
 
-MODEL = "gemini-3.8-flash"
+# ============================================================
+# GROQ CONFIGURATION (ACTIVE)
+# ============================================================
+
+MODEL = "llama-3.3-70b-versatile"
+
+# ============================================================
+# GEMINI CONFIGURATION (KEPT FOR FUTURE USE)
+# ============================================================
+
+# MODEL = "gemini-3.8-flash"
 
 
 SYSTEM_PROMPT = """
@@ -62,9 +78,23 @@ If a question is outside the system's purpose, briefly redirect the user.
 
 
 def main():
-    api_key = os.getenv("GEMINI_API_KEY")
+
+    # ========================================================
+    # GROQ API CONFIGURATION (ACTIVE)
+    # ========================================================
+
+    api_key = os.getenv("GROQ_API_KEY")
+
     if not api_key:
-        raise RuntimeError("GEMINI_API_KEY is not set.")
+        raise RuntimeError("GROQ_API_KEY is not set.")
+
+    # ========================================================
+    # GEMINI API CONFIGURATION (KEPT FOR FUTURE USE)
+    # ========================================================
+
+    # api_key = os.getenv("GEMINI_API_KEY")
+    # if not api_key:
+    #     raise RuntimeError("GEMINI_API_KEY is not set.")
 
     os.makedirs("data", exist_ok=True)
 
@@ -73,10 +103,24 @@ def main():
     try:
         executor = Executor(store)
         memory = MemoryService(store)
-        model = GeminiModelClient(
+
+        # ====================================================
+        # GROQ MODEL CLIENT (ACTIVE)
+        # ====================================================
+
+        model = GroqModelClient(
             model=MODEL,
             api_key=api_key,
         )
+
+        # ====================================================
+        # GEMINI MODEL CLIENT (KEPT FOR FUTURE USE)
+        # ====================================================
+
+        # model = GeminiModelClient(
+        #     model=MODEL,
+        #     api_key=api_key,
+        # )
 
         def approve_action(description: str) -> bool:
             print(f"\nApproval required: {description}")
@@ -136,6 +180,7 @@ def main():
                     history,
                 )
                 print(f"\nCampusConnect: {response}\n")
+
             except Exception as exc:
                 print(
                     "\nCampusConnect error: "
